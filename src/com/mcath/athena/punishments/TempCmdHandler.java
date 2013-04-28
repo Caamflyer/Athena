@@ -11,9 +11,9 @@ public class TempCmdHandler {
     private String[] args;
 
     public TempCmdHandler(CommandSender sender,Command cmd,String[] args) {
-        this.sender=sender;
-        this.cmd=cmd;
-        this.args=args;
+        this.sender = sender;
+        this.cmd = cmd;
+        this.args = args;
     }
 
 }

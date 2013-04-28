@@ -19,7 +19,7 @@ public class MySQL {
     private Athena a;
     
     public MySQL(Athena ath) {
-        a=ath;
+        a = ath;
     }
     
     protected boolean loadDriver() {
@@ -35,27 +35,27 @@ public class MySQL {
     }
     
     protected String getJdbcUrl() {
-        String host=a.getConfig().getString("database.hostname");
-        String port=a.getConfig().getString("database.port");
-        String name=a.getConfig().getString("database.name");
-        String url="jdbc:mysql://"+host+":"+port+"/"+name;
+        String host = a.getConfig().getString("database.hostname");
+        String port = a.getConfig().getString("database.port");
+        String name = a.getConfig().getString("database.name");
+        String url = "jdbc:mysql://"+host+":"+port+"/"+name;
         return url;
     }
     
     protected String getUsername() {
-        String user=a.getConfig().getString("database.username");
+        String user = a.getConfig().getString("database.username");
         return user;
     }
     
     protected String getPassword() {
-        String pass=a.getConfig().getString("database.password");
+        String pass = a.getConfig().getString("database.password");
         return pass;
     }
     
     public boolean connect() {
         if(loadDriver()) {
             try {
-                this.con=DriverManager.getConnection(getJdbcUrl(), getUsername(), getPassword());
+                this.con = DriverManager.getConnection(getJdbcUrl(), getUsername(), getPassword());
                 return true;
             }
             catch (SQLException ex) {
@@ -113,7 +113,7 @@ public class MySQL {
         if(isConn()) {
             try {
                 ps.execute();
-                rs=ps.getResultSet();
+                rs = ps.getResultSet();
                 return rs;
             }
             catch (SQLException ex) {
@@ -131,7 +131,7 @@ public class MySQL {
     public PreparedStatement prepare(String query) {
         if(isConn()) {
             try {
-                ps=con.prepareStatement(query);
+                ps = con.prepareStatement(query);
                 return ps;
             }
             catch (SQLException ex) {
@@ -161,9 +161,9 @@ public class MySQL {
     }
     
     public boolean isColumn(String table, String col) {
-        String query="SELECT "+col+" FROM "+table;
+        String query = "SELECT "+col+" FROM "+table;
         try {
-            st=con.createStatement();
+            st = con.createStatement();
             st.executeQuery(query);
             return true;
         }

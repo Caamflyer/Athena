@@ -10,9 +10,9 @@ public class WarnCmdHandler {
     private String[] args;
 
     public WarnCmdHandler(CommandSender sender,Command cmd,String[] args) {
-        this.sender=sender;
-        this.cmd=cmd;
-        this.args=args;
+        this.sender = sender;
+        this.cmd = cmd;
+        this.args = args;
     }
 
 }

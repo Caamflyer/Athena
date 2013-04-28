@@ -22,7 +22,7 @@ public class PunishCommands implements CommandExecutor {
     private WarnCmdHandler wch;
     private TempCmdHandler tch;
     private FreezeCmdHandler fch;
-    private AthenaUtil util=new AthenaUtil();
+    private AthenaUtil util = new AthenaUtil();
     
     public PunishCommands(Athena ath) {
         a=ath;
@@ -37,12 +37,12 @@ public class PunishCommands implements CommandExecutor {
     
     @Override
     public boolean onCommand(CommandSender sender,Command cmd,String alias,String[] args) {
-        pch=new PunishCmdHandler(sender,cmd,args);
-        kch=new KickCmdHandler(sender,cmd,args);
-        pbch=new PermaCmdHandler(sender,cmd,args);
-        wch=new WarnCmdHandler(sender,cmd,args);
-        tch=new TempCmdHandler(sender,cmd,args);
-        fch=new FreezeCmdHandler(sender,args);
+        pch = new PunishCmdHandler(sender,cmd,args);
+        kch = new KickCmdHandler(sender,cmd,args);
+        pbch = new PermaCmdHandler(sender,cmd,args);
+        wch = new WarnCmdHandler(sender,cmd,args);
+        tch = new TempCmdHandler(sender,cmd,args);
+        fch = new FreezeCmdHandler(sender,args);
         /* Plugin decides on a punishment */
         if("punish".equals(cmd.getName())) {
             

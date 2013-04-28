@@ -10,9 +10,9 @@ public class PunishCmdHandler {
     private String[] args;
 
     public PunishCmdHandler(CommandSender sender,Command cmd,String[] args) {
-        this.sender=sender;
-        this.cmd=cmd;
-        this.args=args;
+        this.sender = sender;
+        this.cmd = cmd;
+        this.args = args;
     }
 
 }

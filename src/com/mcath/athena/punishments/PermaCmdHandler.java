@@ -10,9 +10,9 @@ public class PermaCmdHandler {
     private String[] args;
 
     public PermaCmdHandler(CommandSender sender,Command cmd,String[] args) {
-        this.sender=sender;
-        this.cmd=cmd;
-        this.args=args;
+        this.sender = sender;
+        this.cmd = cmd;
+        this.args = args;
     }
 
 }

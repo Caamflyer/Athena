@@ -10,9 +10,9 @@ public class KickCmdHandler {
     private String[] args;
 
     public KickCmdHandler(CommandSender sender,Command cmd,String[] args) {
-        this.sender=sender;
-        this.cmd=cmd;
-        this.args=args;
+        this.sender = sender;
+        this.cmd = cmd;
+        this.args = args;
     }
 
 }

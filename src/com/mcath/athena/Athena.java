@@ -3,18 +3,23 @@ package com.mcath.athena;
 import org.bukkit.plugin.java.JavaPlugin;
 import com.mcath.athena.commands.PunishCommands;
 import com.mcath.athena.punishments.FrozenPlayerInteractListener;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Athena extends JavaPlugin {
     
-    private static HashSet<String> frozen=new HashSet<>();
+    private static ArrayList<String> frozen = new ArrayList<String>();
 
-    public static HashSet<String> getFrozenHash() {
+    public static ArrayList<String> getFrozenHash() {
         return frozen;
     }
 
-    public static void setFrozenHash(HashSet<String> frozen) {
+    public static void setFrozenHash(ArrayList<String> frozen) {
         Athena.frozen = frozen;
+    }
+    
+    public static boolean isFrozenHash(String s) {
+        return Athena.frozen.contains(s);
     }
 
     @Override
