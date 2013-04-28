@@ -1,0 +1,14 @@
+name: Athena
+main: com.mcath.athena.Athena
+version: 2.0
+authors: [msalihov,RainoBoy97,i2]
+load: STARTUP
+commands:
+  freeze:
+    description: Freezes a player in place
+    usage: /<command> [username]
+    aliases: [f,fr]
+    permission: athena.punish.freeze
+permissions:
+  athena.punish.freeze:
+    default: op

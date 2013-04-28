@@ -1,0 +1,29 @@
+server-id: athena
+
+database:
+  hostname: localhost
+  port: 3306
+  name: minecraft
+  username: plugin
+  password: password
+
+reports:
+  enabled: true
+  cross-server: true
+  poll-interval: 200
+  
+adminchat:
+  enabled: true
+  cross-server: true
+  poll-interval: 100
+  
+punishments:
+  enabled: true
+  cross-server: true
+  poll-interval: 300
+  
+stats:
+  enabled: true
+  
+debug:
+  commands: true
