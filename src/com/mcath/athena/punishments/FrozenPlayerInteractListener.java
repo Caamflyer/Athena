@@ -22,12 +22,7 @@ import org.bukkit.event.player.PlayerShearEntityEvent;
 public class FrozenPlayerInteractListener implements Listener {
     
     private boolean frozen(String plname) {
-        if(Athena.getFrozenHash().contains(plname)) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return Athena.getFrozenHash().contains(plname);
     }
     
     @EventHandler(priority=EventPriority.MONITOR)
