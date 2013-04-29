@@ -2,11 +2,14 @@ package com.mcath.athena.commands;
 
 import com.mcath.athena.Athena;
 import com.mcath.athena.AthenaUtil;
-import com.mcath.athena.punishments.KickCmdHandler;
-import com.mcath.athena.punishments.PermaCmdHandler;
-import com.mcath.athena.punishments.PunishCmdHandler;
-import com.mcath.athena.punishments.TempCmdHandler;
-import com.mcath.athena.punishments.WarnCmdHandler;
+import com.mcath.athena.commands.handlers.FreezeCmdHandler;
+import com.mcath.athena.commands.handlers.KickCmdHandler;
+import com.mcath.athena.commands.handlers.PermaCmdHandler;
+import com.mcath.athena.commands.handlers.PunishCmdHandler;
+import com.mcath.athena.commands.handlers.RocketCmdHandler;
+import com.mcath.athena.commands.handlers.TempCmdHandler;
+import com.mcath.athena.commands.handlers.WarnCmdHandler;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -22,22 +25,23 @@ public class PunishCommands implements CommandExecutor {
     private WarnCmdHandler wch;
     private TempCmdHandler tch;
     private FreezeCmdHandler fch;
+    private RocketCmdHandler rch;
     private AthenaUtil util = new AthenaUtil();
     
     public PunishCommands(Athena ath) {
-        a=ath;
+        a = ath;
     }
     
-    private final static String MULTIPLE_PLAYERS=ChatColor.RED+"Multiple players found. Please be more specific with the name you are specifying!";
-    private final static String NOT_ONLINE=ChatColor.RED+"Player not found on the server. Please make sure you are typing the name correctly!";
-    private final static String NO_PERMS=ChatColor.RED+"You have no permissions to do this!";
-    private final static String TOO_MANY_ARGS=ChatColor.RED+"Too many arguments!";
-    private final static String TOO_LITTLE_ARGS=ChatColor.RED+"Too little arguments!";
-    private final static String CORRECT_FREEZE_USAGE=ChatColor.RED+"Correct usage: /freeze [username]";
+    private final static String MULTIPLE_PLAYERS = ChatColor.RED + "Multiple players found. Please be more specific with the name you are specifying!";
+    private final static String NOT_ONLINE = ChatColor.RED + "Player not found on the server. Please make sure you are typing the name correctly!";
+    private final static String NO_PERMS = ChatColor.RED + "You have no permissions to do this!";
+    private final static String TOO_MANY_ARGS = ChatColor.RED + "Too many arguments!";
+    private final static String TOO_LITTLE_ARGS = ChatColor.RED + "Too little arguments!";
+    private final static String CORRECT_FREEZE_USAGE = ChatColor.RED + "Correct usage: /freeze [username]";
     
     @Override
     public boolean onCommand(CommandSender sender,Command cmd,String alias,String[] args) {
-        pch = new PunishCmdHandler(sender,cmd,args);
+    	pch = new PunishCmdHandler(sender,cmd,args);
         kch = new KickCmdHandler(sender,cmd,args);
         pbch = new PermaCmdHandler(sender,cmd,args);
         wch = new WarnCmdHandler(sender,cmd,args);
@@ -70,7 +74,7 @@ public class PunishCommands implements CommandExecutor {
         
         /* Freezes a player */
         if("freeze".equals(cmd.getName())) {
-            if(args.length<1) {
+            if(args.length < 1) {
                 sender.sendMessage(TOO_LITTLE_ARGS);
             }
             else if(args.length>1) {
@@ -79,6 +83,22 @@ public class PunishCommands implements CommandExecutor {
             else {
                 if(sender.hasPermission("athena.punish.freeze")) {
                     fch.handle();
+                }
+                else {
+                    sender.sendMessage(NO_PERMS);
+                }
+            }
+        }
+        if("rocket".equals(cmd.getName())) {
+            if(args.length < 1) {
+                sender.sendMessage(TOO_LITTLE_ARGS);
+            }
+            else if(args.length > 1) {
+                sender.sendMessage(TOO_MANY_ARGS);
+            }
+            else {
+                if(sender.hasPermission("athena.punish.rocket")) {
+                    rch.handle();
                 }
                 else {
                     sender.sendMessage(NO_PERMS);

@@ -1,4 +1,4 @@
-package com.mcath.athena.commands;
+package com.mcath.athena.commands.handlers;
 
 import com.mcath.athena.Athena;
 import com.mcath.athena.AthenaUtil;
@@ -13,11 +13,11 @@ public class FreezeCmdHandler {
     private String[] args;
     private AthenaUtil util = new AthenaUtil();
     
-    private final static String FROZEN_PLAYER = ChatColor.GREEN+"You have frozen ";
-    private final static String FROZEN_YOU = ChatColor.GOLD+"You have been frozen!";
-    private final static String FROZEN_ALREADY = ChatColor.RED+"That player is already frozen!";
+    private final static String FROZEN_PLAYER = ChatColor.GREEN + "You have frozen ";
+    private final static String FROZEN_YOU = ChatColor.GOLD + "You have been frozen!";
+    private final static String FROZEN_ALREADY = ChatColor.RED + "That player is already frozen!";
 
-    public FreezeCmdHandler(CommandSender sender,String[] args) {
+    public FreezeCmdHandler(CommandSender sender, String[] args) {
         this.sender = sender;
         this.args = args;
     }
@@ -29,7 +29,7 @@ public class FreezeCmdHandler {
         if(!Athena.isFrozenHash(player))
         {
             Athena.getFrozenHash().add(player);
-            sender.sendMessage(FROZEN_PLAYER+pldisplay);
+            sender.sendMessage(FROZEN_PLAYER + pldisplay);
             pl.sendMessage(FROZEN_YOU);
         }
         else
