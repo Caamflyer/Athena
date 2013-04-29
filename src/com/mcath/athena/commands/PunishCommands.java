@@ -6,6 +6,7 @@ import com.mcath.athena.commands.handlers.FreezeCmdHandler;
 import com.mcath.athena.commands.handlers.KickCmdHandler;
 import com.mcath.athena.commands.handlers.PermaCmdHandler;
 import com.mcath.athena.commands.handlers.PunishCmdHandler;
+import com.mcath.athena.commands.handlers.ReportsCmdHandler;
 import com.mcath.athena.commands.handlers.RocketCmdHandler;
 import com.mcath.athena.commands.handlers.TempCmdHandler;
 import com.mcath.athena.commands.handlers.WarnCmdHandler;
@@ -26,6 +27,7 @@ public class PunishCommands implements CommandExecutor {
     private TempCmdHandler tch;
     private FreezeCmdHandler fch;
     private RocketCmdHandler rch;
+    private ReportsCmdHandler rptsch;
     private AthenaUtil util = new AthenaUtil();
     
     public PunishCommands(Athena ath) {
@@ -47,33 +49,34 @@ public class PunishCommands implements CommandExecutor {
         wch = new WarnCmdHandler(sender,cmd,args);
         tch = new TempCmdHandler(sender,cmd,args);
         fch = new FreezeCmdHandler(sender,args);
+        rptsch = new ReportsCmdHandler(sender,args);
         /* Plugin decides on a punishment */
-        if("punish".equals(cmd.getName())) {
+        if("punish".equalsIgnoreCase(cmd.getName())) {
             
         }
         
         /* Kick handling */
-        if("kick".equals(cmd.getName())) {
+        if("kick".equalsIgnoreCase(cmd.getName())) {
             
         }
         
         /* Permanently bans a player */
-        if("permaban".equals(cmd.getName())) {
+        if("permaban".equalsIgnoreCase(cmd.getName())) {
             
         }
         
         /* Bans a player for 7 days */
-        if("tempban".equals(cmd.getName())) {
+        if("tempban".equalsIgnoreCase(cmd.getName())) {
             
         }
         
         /* Warns a player */
-        if("warn".equals(cmd.getName())) {
+        if("warn".equalsIgnoreCase(cmd.getName())) {
             
         }
         
         /* Freezes a player */
-        if("freeze".equals(cmd.getName())) {
+        if("freeze".equalsIgnoreCase(cmd.getName())) {
             if(args.length < 1) {
                 sender.sendMessage(TOO_LITTLE_ARGS);
             }
@@ -89,7 +92,7 @@ public class PunishCommands implements CommandExecutor {
                 }
             }
         }
-        if("rocket".equals(cmd.getName())) {
+        if("rocket".equalsIgnoreCase(cmd.getName())) {
             if(args.length < 1) {
                 sender.sendMessage(TOO_LITTLE_ARGS);
             }
@@ -104,6 +107,29 @@ public class PunishCommands implements CommandExecutor {
                     sender.sendMessage(NO_PERMS);
                 }
             }
+        }
+        
+        if("reports".equalsIgnoreCase(cmd.getName()))
+        {
+        	if(args.length == 0)
+        	{
+        		if(sender.hasPermission("athena.punish.reports"))
+        			rptsch.handle();
+        	}
+        	else if(args.length > 0)
+        	{
+        		sender.sendMessage(TOO_MANY_ARGS);
+        	}
+        }
+        
+        if("report".equalsIgnoreCase(cmd.getName()))
+        {
+        	if(args.length < 2)
+        		sender.sendMessage(TOO_LITTLE_ARGS);
+        	else
+        	{
+        		
+        	}
         }
         return true;
     }

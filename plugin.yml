@@ -9,6 +9,21 @@ commands:
     usage: /<command> [username]
     aliases: [f,fr]
     permission: athena.punish.freeze
+  rocket:
+    description: Launches a player in to the air.
+    usage: /<command> [username]
+    aliases: [f,fr]
+    permission: athena.punish.freeze
+  report:
+    description: Report a mis-behaving player
+    usage: /<command> [username]
+    aliases: [rep]
+    permission: athena.punish.freeze
+  reports:
+    description: View reports
+    usage: /<command> [username]
+    aliases: [reps]
+    permission: athena.punish.freeze
 permissions:
   athena.punish.freeze:
     default: op
