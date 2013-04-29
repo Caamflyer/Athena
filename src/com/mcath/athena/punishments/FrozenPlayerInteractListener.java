@@ -27,6 +27,7 @@ public class FrozenPlayerInteractListener implements Listener {
     
     @EventHandler(priority = EventPriority.MONITOR)
     public void playerMove(PlayerMoveEvent e) {
+    	if (e.getFrom().getBlockX() ==  e.getTo().getBlockX() || e.getFrom().getBlockZ() == e.getTo().getBlockZ() || e.getFrom().getBlockY() == e.getTo().getBlockY()) return;
         String plname = e.getPlayer().getName();
         if(frozen(plname)) {
             AthLog.debug("Player "+plname+" has moved while frozen!");
